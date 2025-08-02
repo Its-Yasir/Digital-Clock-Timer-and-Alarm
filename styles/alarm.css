@@ -1,0 +1,124 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+:root{
+  --body-color : #191919;
+  --primary-color : #2c2c2c;
+  --secondary-color : #494949;
+  --action-color : #4cc2ff;
+  --text-color :  rgb(223, 223, 223);
+}
+body{
+  background-color:var(--body-color);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+nav{
+  width: 90%;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 7px;
+  height: 83px;
+  align-items: center;
+  box-shadow: 1px 1px 20px 20px #00000014;
+}
+
+.alarm-nav-btn{
+  display: flex;
+  background-color: var(--secondary-color);
+  width: 63px;
+  height: 63px;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: all 0.2s ease-in-out;
+}
+.alarm-nav-btn div{
+  display: inline-block;
+  color: var(--action-color);
+  transition: all 0.2s ease-in-out;
+}
+.alarm-nav-btn .mage--alarm-clock-fill{
+  width: 24px;
+  height: 24px;
+  color: var(--action-color);
+}
+
+.timer-nav-btn{
+  display: flex;
+  width: max-content;
+  height: max-content;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  color: var(--text-color)
+}
+.timer-nav-btn:hover{
+  background-color: var(--secondary-color);
+}
+
+.timer-nav-btn div{
+  display: none;
+  transition: all 0.2s ease-in-out;
+}
+.timer-nav-btn .mdi--timer-sand{
+  width: 40px; 
+  height: 40px;
+  transition: all 0.2s ease-in-out;
+}
+.timer-nav-btn:hover{
+  background-color: var(--secondary-color);
+}
+.timer-nav-btn:hover div{
+  display: inline;
+}
+.timer-nav-btn:hover .mdi--timer-sand{
+  width: 24px;
+  height: 24px;
+}
+.clock-nav-btn{
+  display: flex;
+  background-color: transparent;
+  width: 63px;
+  height: 63px;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: all 0.2s ease-in-out;
+}
+.clock-nav-btn div{
+  display: none;
+  transition: all 0.2s ease-in-out;
+}
+.clock-nav-btn .tabler--clock-filled{
+  width: 40px; 
+  height: 40px;
+  transition: all 0.2s ease-in-out;
+}
+.clock-nav-btn:hover{
+  background-color: var(--secondary-color);
+}
+.clock-nav-btn:hover div{
+  display: inline;
+}
+.clock-nav-btn:hover .tabler--clock-filled{
+  width: 24px;
+  height: 24px;
+}

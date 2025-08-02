@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript-Digital-Clock | Timer & Alarm</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/icons.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">
+      <div class="clock-nav-btn js-clock-nav-btn">
+        <span class="tabler--clock-filled"></span>
+        <div class="js-clock-text-nav">Clock</div>
+      </div>
+    </a>
+    <a href="timer.html">
+      <div class="timer-nav-btn js-timer-nav-btn">
+        <span class="mdi--timer-sand"></span>
+        <div class="js-timer-text-nav">Timer</div>
+      </div>
+    </a>
+    <a href="alarm.html">
+      <div class="alarm-nav-btn js-alarm-nav-btn">
+        <span class="mage--alarm-clock-fill"></span>
+        <div class="js-alarm-text-nav">Alarm</div>
+      </div>
+    </a>
+    
+  </nav>
+
+  <div class="main js-main">
+    <div id="time">
+      <div class="circle" style="--clr:#ff2972;">
+        <div class="dots hr_dots"></div>
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" id="hh"></circle>
+        </svg>
+        <div id="hours">00</div>
+      </div>
+      <div class="circle" style="--clr:#fee800;">
+        <div class="dots min_dots"></div>
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" id="mm"></circle>
+        </svg>
+        <div id="minutes">00</div>
+      </div>
+      <div class="circle" style="--clr:#04fc43;">
+        <div class="dots sec_dots"></div>
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" id="ss"></circle>
+        </svg>
+        <div id="seconds">00</div>
+      </div>
+      <div class="ap">
+        <div id="ampm">AM</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/clock.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+
+.tabler--clock-filled {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34M12 6a1 1 0 0 0-.993.883L11 7v5l.009.131a1 1 0 0 0 .197.477l.087.1l3 3l.094.082a1 1 0 0 0 1.226 0l.094-.083l.083-.094a1 1 0 0 0 0-1.226l-.083-.094L13 11.585V7l-.007-.117A1 1 0 0 0 12 6'/%3E%3C/svg%3E");
+  background-color: currentColor; /* still needed for mask */
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  color: inherit; /* Make color controllable from parent */
+}
+.mdi--timer-sand {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M6 2h12v6l-4 4l4 4v6H6v-6l4-4l-4-4zm10 14.5l-4-4l-4 4V20h8zm-4-5l4-4V4H8v3.5zM10 6h4v.75l-2 2l-2-2z'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  color: inherit;
+}
+.mage--alarm-clock-fill {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M18.765 18.579a8.87 8.87 0 1 0-13.54 0l-1.88 1.88a.75.75 0 0 0 .53 1.28a.7.7 0 0 0 .53-.22l1.88-1.88a8.81 8.81 0 0 0 11.42 0l1.88 1.88a.7.7 0 0 0 .53.22a.74.74 0 0 0 .53-.22a.75.75 0 0 0 0-1.06zm-3.75-2.68a1 1 0 0 1-1.41 0l-2.61-2.61v-5.06a1 1 0 1 1 2 0v4.23l2 2a1 1 0 0 1 .02 1.44m5.67-9.8a.8.8 0 0 1-.53-.22l-2.31-2.32a.74.74 0 0 1 0-1.06a.75.75 0 0 1 1.06 0l2.36 2.28a.75.75 0 0 1 0 1.06a.8.8 0 0 1-.58.26m-17.42 0a.8.8 0 0 1-.53-.22a.75.75 0 0 1 0-1.06l2.32-2.32a.75.75 0 1 1 1.06 1.06l-2.32 2.32a.75.75 0 0 1-.53.22'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  color: inherit;
+}
