@@ -253,3 +253,13 @@ nav{
 .control:hover{
   background-color: var(--secondary-color);
 }
+.mili-seconds{
+  height: 97px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+.text{
+  box-shadow: 1px 1px 20px 11px #19191930;
+}

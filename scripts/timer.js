@@ -81,6 +81,9 @@ const upSeconds = document.querySelector('.js-up-seconds');
 const downHours = document.querySelector('.js-down-hours');
 const downMinutes = document.querySelector('.js-down-minutes');
 const downSeconds = document.querySelector('.js-down-seconds');
+const miliSeconds = document.querySelector('.mili-seconds');
+const jsMiliSecondsNumber = document.querySelector('.js-mili-second-number');
+const jsBox = document.querySelectorAll('.box');
 
 function updateTime(unit, value){
   if(unit === 'hours' && value === 'up'){
@@ -174,6 +177,7 @@ function loadFromLocalStorage(){
   }
 }
 playBtn.addEventListener('click', () => {
+  miliSeconds.style.display = 'flex';
   startTimer();
 })
 
@@ -186,14 +190,28 @@ function matchTimer(h,m,s,timeString){
     updateHTML();
     loadFromLocalStorage();
     stopColor('#f51616');
+    hideBorder();
+    miliSeconds.style.display = 'none';
     alarmSound.play().catch(err => {
       console.error("Audio playback failed:", err);
     });
   }
 }
+function displayBorder(){
+  jsBox.forEach((box)=>{
+    box.style.borderColor = `var(--action-color)`;
+  })
+}
+function hideBorder(){
+  jsBox.forEach((box)=>{  
+    box.style.borderColor = `var(--primary-color)`;
+  })
+}
 let timeString;
+let miliSecondsValue = 0;
 function startTimer(){
   if(timer==='play'){
+    displayBorder();
     console.log(btnPressed)
     if(btnPressed === 'stop'){
       timeString = `${hoursValue}${minutesValue}${secondsValue}`;
@@ -204,6 +222,12 @@ function startTimer(){
       updateHTML();
       btnPressed = 'play';
       timerInterval = setInterval(() => {
+        if(miliSecondsValue < 99){
+          miliSecondsValue++;
+          jsMiliSecondsNumber.textContent = miliSecondsValue < 10 ? `0${miliSecondsValue}` : miliSecondsValue;
+        }else{
+          miliSecondsValue = 0;
+          jsMiliSecondsNumber.textContent = '00';
         if(secondsValue < 59){
           secondsValue++;
           matchTimer(hoursValue, minutesValue, secondsValue, timeString);
@@ -224,16 +248,18 @@ function startTimer(){
               hoursValue = 0;
             }
           }
-        }
+        }}
         updateHTML();
-      }, 1000);
+      }, 10);
   }
 }
 
 
 stopBtn.addEventListener('click', () => {
+    hideBorder();
     clearInterval(timerInterval);
     //timerInterval = null;
+    miliSeconds.style.display = 'none';
     loadFromLocalStorage();
     updateHTML();
     btnPressed = 'stop';
