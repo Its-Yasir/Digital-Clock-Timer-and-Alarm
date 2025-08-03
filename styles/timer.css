@@ -119,3 +119,35 @@ nav{
   width: 24px;
   height: 24px;
 }
+.main{
+  width: max-content;
+  height: max-content;
+  margin-top: 50px;
+}
+.up{
+  padding: 10px;
+  display: flex;
+  column-gap: 15px;
+}
+.up div{
+  background-color: var(--primary-color);
+  width: max-content;
+  height: max-content;
+  padding: 5px 25px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.up div:hover{
+  background-color: var(--secondary-color);
+}
+.up div .mingcute--up-line{
+  color: var(--text-color);
+}
+.up div:hover .mingcute--up-line{
+  color: var(--action-color);
+  transform: translateY(-5px);
+}
