@@ -43,14 +43,46 @@
     </div>
 
     <div class="time">
-      <div class="hours">
+      <div class="hours box">
+        <div class="hour-number number">00</div>
         <div class="text">Hours</div>
-        <div class="hour-number">00</div>
+      </div>
+
+      <div class="minutes box">
+        <div class="minute-number number">00</div>
+        <div class="text">Minutes</div>
+      </div>
+
+      <div class="seconds box">
+        <div class="second-number number">00</div>
+        <div class="text">Seconds</div>
       </div>
     </div>
 
-  </div>
+    <div class="down">
+      <div class="down-hours">
+        <span class="mingcute--down-line"></span>
+      </div>
+      <div class="down-minutes">
+        <span class="mingcute--down-line"></span>
+      </div>
+      <div class="down-seconds">
+        <span class="mingcute--down-line"></span>
+      </div>
+    </div>
 
-  <script src="scripts/script.js" type="module"></script>
+    <div class="controls">
+      <div class="stop js-stop control">
+        <span class="carbon--stop-filled"></span>
+      </div>
+      <div class="resume js-resume control">
+        <span class="iconoir--pause-solid"></span>
+      </div>
+      <div class="play js-play control">
+        <span class="mingcute--play-fill"></span>
+      </div>
+    </div>
+
+  <script src="scripts/timer.js" type="module"></script>
 </body>
 </html>
