@@ -186,6 +186,9 @@ function matchTimer(h,m,s,timeString){
     updateHTML();
     loadFromLocalStorage();
     stopColor('#f51616');
+    alarmSound.play().catch(err => {
+      console.error("Audio playback failed:", err);
+    });
   }
 }
 let timeString;
@@ -240,6 +243,9 @@ resumeBtn.addEventListener('click', () => {
     timerInterval = null;
     btnPressed = 'pause';
 });
+
+const alarmSound = new Audio('assets/smooth-completed-notify-starting-alert-274739.mp3');
+
 
 loadFromLocalStorage();
 updateHTML();
