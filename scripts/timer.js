@@ -1,3 +1,9 @@
+let minutesValue;
+let hoursValue;
+let secondsValue;
+let timeArray;
+let btnPressed = 'stop';
+let timerInterval;
 const stopBtn = document.querySelector('.js-stop');
 const resumeBtn = document.querySelector('.js-resume');
 const playBtn = document.querySelector('.js-play');
@@ -57,23 +63,14 @@ function playColor(color){
   setBtn();
 } 
 stopBtn.addEventListener('click', () => {
-  console.log('Stop button clicked');
   stopColor('#f51616')
 });
 resumeBtn.addEventListener('click', () => {
-  console.log('Resume button clicked');
-  resumeColor('#4caf50')
+  resumeColor('#4caf50');
 });
 playBtn.addEventListener('click', () => {
-  console.log('Play button clicked');
   playColor('#2196f3')
 });
-
-let minutesValue;
-let hoursValue;
-let secondsValue;
-let timeArray;
-
 
 const hourNumber = document.querySelector('.js-hour-number');
 const minuteNumber = document.querySelector('.js-minute-number');
@@ -147,7 +144,6 @@ downSeconds.addEventListener('click', () => {
 }); 
 
 function updateHTML(){
-  loadFromLocalStorage()
   hourNumber.textContent = hoursValue<10 ? `0${hoursValue}` : hoursValue;
   minuteNumber.textContent = minutesValue<10 ? `0${minutesValue}` : minutesValue;
   secondNumber.textContent = secondsValue<10 ? `0${secondsValue}` : secondsValue;
@@ -164,7 +160,6 @@ function saveToLocalStorage(){
 }
 function loadFromLocalStorage(){
   const savedTime = localStorage.getItem('time');
-  console.log(savedTime);
   if(savedTime){
     timeArray = JSON.parse(savedTime);
     hoursValue = timeArray[0];
@@ -172,7 +167,79 @@ function loadFromLocalStorage(){
     secondsValue = timeArray[2];
   }
   else{
-    
+    hoursValue = 0;
+    minutesValue = 5;
+    secondsValue = 0;
+    timeArray = [hoursValue, minutesValue, secondsValue];
   }
 }
+playBtn.addEventListener('click', () => {
+  startTimer();
+})
+
+function matchTimer(h,m,s,timeString){
+  let timerTimeString = `${h}${m}${s}`;
+  if(timerTimeString === timeString){
+    clearInterval(timerInterval);
+    //timerInterval = null;
+    btnPressed = 'stop';
+    updateHTML();
+    loadFromLocalStorage();
+    stopColor('#f51616');
+  }
+}
+let timeString;
+function startTimer(){
+  if(timer==='play'){
+    console.log(btnPressed)
+    if(btnPressed === 'stop'){
+      timeString = `${hoursValue}${minutesValue}${secondsValue}`;
+      hoursValue = 0;
+      minutesValue = 0;
+      secondsValue = 0;
+    }   
+      updateHTML();
+      btnPressed = 'play';
+      timerInterval = setInterval(() => {
+        if(secondsValue < 59){
+          secondsValue++;
+          matchTimer(hoursValue, minutesValue, secondsValue, timeString);
+          console.log(timeString);
+          updateHTML();
+        }else{
+          secondsValue = 0;
+          matchTimer(hoursValue, minutesValue, secondsValue, timeString);
+          if(minutesValue < 59){
+            minutesValue++;
+            updateHTML();
+          }else{
+            minutesValue = 0;
+            if(hoursValue < 23){
+              hoursValue++;
+              updateHTML();
+            }else{
+              hoursValue = 0;
+            }
+          }
+        }
+        updateHTML();
+      }, 1000);
+  }
+}
+
+
+stopBtn.addEventListener('click', () => {
+    clearInterval(timerInterval);
+    //timerInterval = null;
+    loadFromLocalStorage();
+    updateHTML();
+    btnPressed = 'stop';
+});
+resumeBtn.addEventListener('click', () => {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    btnPressed = 'pause';
+});
+
 loadFromLocalStorage();
+updateHTML();
