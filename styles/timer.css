@@ -11,6 +11,9 @@
   --action-color : #4cc2ff;
   --text-color :  rgb(223, 223, 223);
 }
+a{
+  text-decoration: none;
+}
 body{
   background-color:var(--body-color);
   width: 100vw;
