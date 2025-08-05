@@ -33,25 +33,95 @@
   <div class="main js-main">
     <div class="alarm alarm1">
       <div class="data">
-        <div class="time">
-          <div class="hours">05</div>
-          <div class="colon">:</div>
-          <div class="minutes">30</div>
-          <div class="ampm">AM</div>
-        </div>
-        <div class="sceduale">
-          <div class="everyDay">Everyday</div>
-        </div>
-        <div class="toggle">
-          <div class="toggle-circle"></div>
+        <div class="left">
+          <div class="time">
+            <div class="hours">05</div>
+            <div class="colon">:</div>
+            <div class="minutes">30</div>
+            <div class="ampm">AM</div>
+          </div>
+          <div class="sceduale">
+            <div class="everyDay">Everyday</div>
+          </div>
         </div>
       </div>
       <div class="edit">
         <button class="delete">Delete</button>
-        <button class="edit"></button>
+        <button class="edit-btn">Edit</button>
       </div>
     </div>
-    <button class="addAlarm">Add New Alarm 1/10</button>
+    <button class="addAlarm">Add New Alarm</button>
+  </div>
+
+  <div class="add-alarm-box-bg">
+    <div class="add-alarm-box-content">
+      <div class="up js-up">
+        <div class="up-hours js-up-hours">
+          <span class="mingcute--up-line"></span>
+        </div>
+        <div class="up-minutes js-up-minutes">
+          <span class="mingcute--up-line"></span>
+        </div>
+        <div class="up-seconds js-up-seconds">
+          <span class="mingcute--up-line"></span>
+        </div>
+      </div>
+
+      <div class="time">
+        <div class="hours box">
+          <div class="hour-number js-hour-number number">00</div>
+          <div class="text">Hours</div>
+        </div>
+        <div class="minutes box">
+          <div class="minute-number js-minute-number number">00</div>
+          <div class="text">Minutes</div>
+        </div>
+        <div class="ampm box">
+          <div class="number">AM</div>
+          <div class="text ampm-text">AM/PM</div>
+        </div>
+      </div>
+
+      <div class="down js-down">
+        <div class="down-hours js-down-hours">
+          <span class="mingcute--down-line"></span>
+        </div>
+        <div class="down-minutes js-down-minutes">
+          <span class="mingcute--down-line"></span>
+        </div>
+        <div class="down-seconds js-down-seconds">
+          <span class="mingcute--down-line"></span>
+        </div>
+      </div>
+
+      <div class="options">
+        <div>
+          <input type="radio" name="category" selected class="once option" id="once">
+          <label for="once">Once</label>
+        </div>
+        <div>
+          <input type="radio" name="category" class="everyDay option" id="everyday">
+          <label for="everyday">Everyday</label>
+        </div>
+        <div>
+          <input type="radio" name="category" class="custom option" id="custom">
+          <label for="custom">Custom</label>
+        </div>
+      </div>
+      <div class="checkbox-days">
+        <input type="checkbox" class="input-day" value="monday">Monday</input>
+        <input type="checkbox" value="tuesday">Tueasday</input>
+        <input type="checkbox" value="wednesday">Wednesday</input>
+        <br>
+        <input type="checkbox" value="Thursday">Thursday</input>
+        <input type="checkbox" value="friday">Friday</input>
+        <input type="checkbox" value="saturday">Saturday</input>
+        <br>
+        <input type="checkbox" value="sunday">Sunday</input>
+      </div>
+
+      <button class="save-alarm">Save Alarm</button>
+    </div>
   </div>
 
   <script src="scripts/script.js" type="module"></script>
