@@ -225,7 +225,6 @@ nav{
 }
 
 
-
 .up{
   padding: 10px;
   display: flex;
@@ -379,4 +378,33 @@ label{
 }
 .save-alarm:hover{
   background-color: #20ce26;
+}
+.checkbox-days{
+  display: none;
+}
+.close{
+  width: 30px;
+  align-self: flex-end;
+  height: 30px;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.close:hover{
+  background-color: var(--secondary-color);
+}
+.close span{
+  font-size: 2rem;
+  float: right;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+} 
+
+
+.add-alarm-box-bg{
+  display: none;
 }
