@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="styles/icons.css">
 </head>
 <body>
+
+  <audio id="alarm-audio" src="assets/bedside-clock-alarm-95792.mp3" preload="auto"></audio>
+
   <nav>
     <a href="index.html">
       <div class="clock-nav-btn js-clock-nav-btn">
@@ -93,17 +96,16 @@
         </div>
       </div>
       <div class="checkbox-days js-checkbox-days">
-        <input type="checkbox" class="js-monday" value="monday">Monday</input>
-        <input type="checkbox" class="js-tuesday" value="tuesday">Tuesday</input>
-        <input type="checkbox" class="js-wednesday" value="wednesday">Wednesday</input>
+        <label><input type="checkbox" class="js-monday" value="monday"> Monday</label>
+        <label><input type="checkbox" class="js-tuesday" value="tuesday"> Tuesday</label>
+        <label><input type="checkbox" class="js-wednesday" value="wednesday"> Wednesday</label>
         <br>
-        <input type="checkbox" class="js-thursday" value="Thursday">Thursday</input>
-        <input type="checkbox" class="js-friday" value="friday">Friday</input>
-        <input type="checkbox" class="js-saturday" value="saturday">Saturday</input>
+        <label><input type="checkbox" class="js-thursday" value="thursday"> Thursday</label>
+        <label><input type="checkbox" class="js-friday" value="friday"> Friday</label>
+        <label><input type="checkbox" class="js-saturday" value="saturday"> Saturday</label>
         <br>
-        <input type="checkbox" class="js-sunday" value="sunday">Sunday</input>
+        <label><input type="checkbox" class="js-sunday" value="sunday"> Sunday</label>
       </div>
-
       <button class="save-alarm js-save-alarm">Save Alarm</button>
     </div>
   </div>

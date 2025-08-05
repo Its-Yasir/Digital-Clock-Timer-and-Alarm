@@ -1,3 +1,5 @@
+import { matchAlarmTime } from "./utils/funs.js";
+
 const closeAddAlarmMenuBtn = document.querySelector('.js-close');
 const addAlarmBoxBg = document.querySelector('.add-alarm-box-bg');
 const addAlarmBoxContent = document.querySelector('.add-alarm-box-content');
@@ -23,7 +25,6 @@ const saturdayInput = document.querySelector('.js-saturday');
 const sundayInput = document.querySelector('.js-sunday');
 const saveAlarmBtn = document.querySelector('.js-save-alarm');
 
-
 addAlarmBtn.addEventListener('click', () => {
   addAlarmBoxBg.style.display = 'flex'; 
 });
@@ -38,15 +39,30 @@ body.addEventListener('click', (e) => {
   }
 });
 
-let alarms = [{
+function updateDays(array){
+  let html = '';
+  array.forEach((value, index)=>{
+    html += `
+      <div class="everyDay">${value.toUpperCase()}</div>
+    `;
+  });
+  return html;
+}
+
+export let alarms = JSON.parse(localStorage.getItem('alarms')) || [{
+  id: 'al1',
   time:{
     hours:'05',
     minutes:'00',
     ampm:'AM'
   },
-  sceduale: 'everyday',
+  sceduale: [
+    'everyday'
+  ],
+  timeString: '0500AM'
 }]
-function renderAlarms() {
+export function renderAlarms() {
+  main.innerHTML = '';
   alarms.forEach((alarm,index) => {
     main.innerHTML += `
       <div class="alarm alarm${index + 1}">
@@ -59,17 +75,27 @@ function renderAlarms() {
               <div class="ampm">${alarm.time.ampm}</div>
             </div>
             <div class="sceduale">
-              <div class="everyDay">${alarm.sceduale.toUpperCase()}</div>
+              ${updateDays(alarm.sceduale)}
             </div>
           </div>
         </div>
         <div class="edit">
-          <button class="delete">Delete</button>
-          <button class="edit-btn">Edit</button>
+          <button class="delete js-delete" data-delete-id="${alarm.id}">Delete Alarm</button>
         </div>
       </div>
     `
-  })
+  });
+  
+
+  document.querySelectorAll('.js-delete').
+    forEach((deleteBtn) => {
+    deleteBtn.addEventListener('click', () => {
+      const alarmId = deleteBtn.dataset.deleteId;
+      alarms = alarms.filter(alarm => alarm.id !== alarmId);
+      renderAlarms();
+      saveToLocalStorage();
+    });
+  });
 }
 
 let hours = 5;
@@ -120,13 +146,71 @@ ampmSelectorDown.addEventListener('click', () => {
 
 onceOption.addEventListener('click', () => {
   sceduale = 'once';
+  checkboxDays.style.display = 'none';
 });
 everyDayOption.addEventListener('click', () => {
   sceduale = 'everyday';
+  checkboxDays.style.display = 'none';
 });
 customOption.addEventListener('click', () => {
   checkboxDays.style.display = 'inline-block';
   sceduale = false;
 });
 
+let selectedDays = [];
+checkboxDays.addEventListener('change', (event) => {
+  const checkbox = event.target;
+  if (checkbox.type === 'checkbox') {
+    const day = checkbox.value.toLowerCase();
+
+    if (checkbox.checked) {
+      if (!selectedDays.includes(day)) {
+        selectedDays.push(day);
+      }
+    } else {
+      // Remove the unchecked day
+      selectedDays = selectedDays.filter(d => d !== day);
+    }
+  }
+});
+
+function updateAlarmsArray(){
+  let hoursValue = document.querySelector('.js-hour-number').textContent;
+  let minutesValue = document.querySelector('.js-minute-number').textContent;
+  let ampmValue = document.querySelector('.js-ampm').textContent;
+
+  if(selectedDays.length !== 0) {
+    sceduale = 'custom';
+  }
+
+  if(sceduale){
+    alarms.push({
+      id: `al${alarms.length + 1}`,
+      time: {
+        hours: hoursValue,
+        minutes: minutesValue,
+        ampm: ampmValue
+      },
+      sceduale: selectedDays.length !== 0 ? selectedDays : [sceduale],
+      timeString: `${hoursValue}${minutesValue}${ampmValue}`
+    });
+    renderAlarms();
+    addAlarmBoxBg.style.display = 'none';
+    selectedDays = [];
+  }else{
+    alert('Please select specific days for the alarm.');
+  }
+  saveToLocalStorage();
+}
+saveAlarmBtn.addEventListener('click', () => {
+  updateAlarmsArray();
+});
+
+export function saveToLocalStorage() {
+  localStorage.setItem('alarms', JSON.stringify(alarms));
+}
+export let alarmIntervalID = setInterval(() => {
+  matchAlarmTime();
+}, 1000);
+saveToLocalStorage();
 renderAlarms();
