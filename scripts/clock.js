@@ -35,15 +35,38 @@ export function updateClock(){
   seconds.innerHTML = s + `<br><span>Seconds  </span>`;
   ampm.innerHTML = am;
 
-  hh.style.strokeDashoffset = 440-(440*h)/12;
-  mm.style.strokeDashoffset = 440-(440*m)/60;
-  ss.style.strokeDashoffset = 440-(440*s)/60;
-
   
+
+  if(window.innerWidth<=650){
+    hh.style.strokeDashoffset = 345-(345*h)/12;
+    mm.style.strokeDashoffset = 345-(345*m)/60;
+    ss.style.strokeDashoffset = 345-(345*s)/60
+  }else{
+    hh.style.strokeDashoffset = 440-(440*h)/12;
+    mm.style.strokeDashoffset = 440-(440*m)/60;
+    ss.style.strokeDashoffset = 440-(440*s)/60;
+  }
   hr_dot.style.transform = `rotate(${h*30}deg)`
   min_dot.style.transform = `rotate(${m*6}deg)`
   sec_dot.style.transform = `rotate(${s*6}deg)`
+  
+  
 
   let timeString = h+m+s+am;
   return timeString;
 } 
+
+if(window.innerWidth<=650){
+  document.querySelector('.svg-hh').innerHTML = `
+    <circle cx="55" cy="55" r="55"></circle>
+    <circle cx="55" cy="55" r="55" id="hh"></circle>
+  `
+  document.querySelector('.svg-mm').innerHTML = `
+    <circle cx="55" cy="55" r="55"></circle>
+    <circle cx="55" cy="55" r="55" id="mm"></circle>
+  `
+  document.querySelector('.svg-ss').innerHTML = `
+    <circle cx="55" cy="55" r="55"></circle>
+    <circle cx="55" cy="55" r="55" id="ss"></circle>
+  `;
+}

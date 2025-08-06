@@ -27,15 +27,18 @@ const saveAlarmBtn = document.querySelector('.js-save-alarm');
 
 addAlarmBtn.addEventListener('click', () => {
   addAlarmBoxBg.style.display = 'flex'; 
+  body.style.overflowY = 'hidden';
 });
 
 closeAddAlarmMenuBtn.addEventListener('click', () => {
   addAlarmBoxBg.style.display = 'none';
+  body.style.overflowY = 'auto';
 });
 
 body.addEventListener('click', (e) => {
   if (e.target === addAlarmBoxBg) {
     addAlarmBoxBg.style.display = 'none';
+    body.style.overflowY = 'auto';
   }
 });
 

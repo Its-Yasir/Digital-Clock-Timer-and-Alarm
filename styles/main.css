@@ -206,3 +206,22 @@ nav{
   border-radius: 50%;
   box-shadow: 0 0 20px var(--clr), 0 0 60px var(--clr) ;
 }
+
+@media screen and (max-width:650px){
+  #time .circle{
+    width: 120px;
+    height: 120px;
+  }
+  #time .circle svg{
+    width: 120px;
+    height: 120px;
+  }
+  #time{
+    gap: 10px;
+  }
+  
+  #time .circle svg circle:nth-child(2){
+    stroke: var(--clr);
+    stroke-dasharray: 345;
+  }
+}
