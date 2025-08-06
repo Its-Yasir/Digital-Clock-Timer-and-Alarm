@@ -62,7 +62,8 @@ export let alarms = JSON.parse(localStorage.getItem('alarms')) || [{
   sceduale: [
     'everyday'
   ],
-  timeString: '0500AM'
+  timeString: '0500AM',
+  status: 'not ringing'
 }]
 export function renderAlarms() {
   main.innerHTML = '';
@@ -195,7 +196,8 @@ function updateAlarmsArray(){
         ampm: ampmValue
       },
       sceduale: selectedDays.length !== 0 ? selectedDays : [sceduale],
-      timeString: `${hoursValue}${minutesValue}${ampmValue}`
+      timeString: `${hoursValue}${minutesValue}${ampmValue}`,
+      status: 'not ringing'
     });
     renderAlarms();
     addAlarmBoxBg.style.display = 'none';
@@ -207,6 +209,7 @@ function updateAlarmsArray(){
 }
 saveAlarmBtn.addEventListener('click', () => {
   updateAlarmsArray();
+  body.style.overflowY = 'auto';
 });
 
 export function saveToLocalStorage() {
